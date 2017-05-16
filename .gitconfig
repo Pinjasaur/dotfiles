@@ -1,0 +1,17 @@
+[alias]
+	grog = log --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)' --graph --abbrev-commit --decorate --all
+	acm = !git add -A && git commit -m
+	cm = commit -m
+	it = !git init && git commit -m “root” --allow-empty
+	st = status -bs
+	sti = status -bs --ignored
+	commend = commit --amend --no-edit
+	stash-all = stash save --include-untracked
+	undo = reset --soft HEAD^
+
+[push]
+	default = simple
+	followTags = true
+
+[status]
+	showUntrackedFiles = all
