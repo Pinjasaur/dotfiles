@@ -21,7 +21,7 @@ set cursorline
 "
 set list
 " Display invisibles
-set listchars=tab:▸\ ,eol:¬,trail:▫
+set listchars=tab:»\ ,trail:·,eol:¬
 " Visually selects characters last entered in insert mode
 nnoremap gV `[v`]
 " 80 column character limit
