@@ -26,6 +26,8 @@ set listchars=tab:»\ ,trail:·,eol:¬
 nnoremap gV `[v`]
 " 80 column character limit
 set colorcolumn=80
+" Fast update time (quickly show Git changes in gutter)
+set updatetime=250
 
 "
 " # Movement
