@@ -6,6 +6,8 @@ there's no place like ~/
 
 ### Vim
 
+> In PuTTY, Settings -> Connection -> Data -> Terminal-type to "xterm-256colors" may be required.
+
 - https://github.com/tpope/vim-pathogen
 - https://github.com/tpope/vim-sensible
 - https://github.com/tpope/vim-surround
