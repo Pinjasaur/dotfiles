@@ -1,10 +1,24 @@
-# dotfiles
+# dotfiles <img align="right" src="http://forthebadge.com/images/badges/built-with-love.svg">
 
 there's no place like ~/
 
 ## Setup
 
 As per https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/.
+
+Create a `.bash_extras` for setting up Git credentials and any specific settings.
+
+```
+# Git credentials
+GIT_AUTHOR_NAME="Paul Esch-Laurent"
+GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+GIT_AUTHOR_EMAIL="p@uly.io"
+GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+
+# Set the credentials
+git config --global user.name "$GIT_AUTHOR_NAME"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
+```
 
 ## Dependencies
 
@@ -42,3 +56,13 @@ Mouse settings if less than v2.1.
   # Allow mouse to select windows
   set -g mouse-select-window on
   ```
+
+## References
+
+Tooling and configuration inspired by:
+
+- https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+- https://github.com/mathiasbynens/dotfiles
+- https://github.com/necolas/dotfiles
+- https://github.com/oxalorg/dotfiles
+- https://github.com/mislav/dotfiles
