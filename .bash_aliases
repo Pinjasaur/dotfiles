@@ -33,3 +33,9 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 alias ..5='cd ../../../../..'
+
+# For managing the dotfiles repo: https://uly.io/x
+alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# Easier `source`ing of my shell config
+alias src='source ~/.bashrc'
