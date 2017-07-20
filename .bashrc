@@ -8,7 +8,7 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # Load the shell dotfiles
-for file in ~/.sh_{exports,aliases,functions,prompt,extras}; do
+for file in ~/.bash_{exports,aliases,functions,prompt,extras}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
