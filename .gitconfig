@@ -1,6 +1,6 @@
 [core]
 	# Custom .gitignore
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore_global
 
 [alias]
 	# Prettier git `log`
