@@ -2,9 +2,12 @@
 
 there's no place like ~/
 
+
 ## Setup
 
 As per https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/.
+
+Don't forget to update any submodules: `git submodule update --init --recursive`.
 
 Create a `.bash_extras` for setting up Git credentials and any specific settings.
 
@@ -20,18 +23,8 @@ git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 ```
 
-## Dependencies
 
-### Vim
-
-- https://github.com/tpope/vim-pathogen
-- https://github.com/tpope/vim-sensible
-- https://github.com/tpope/vim-surround
-- https://github.com/airblade/vim-gitgutter
-- https://github.com/editorconfig/editorconfig-vim
-- https://github.com/jiangmiao/auto-pairs
-- https://github.com/alvan/vim-closetag
-- https://github.com/sjl/badwolf
+## Noteworthy
 
 ### Tmux
 
@@ -56,6 +49,7 @@ Mouse settings if less than v2.1.
   # Allow mouse to select windows
   set -g mouse-select-window on
   ```
+
 
 ## References
 
