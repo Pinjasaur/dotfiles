@@ -19,6 +19,10 @@
 	st = status -bs
 	sti = status -bs --ignored
 
+	# Git `checkout` shorthand
+	co = checkout
+	cob = checkout -b
+
 	# Commit files in the staging area to the last commit
 	commend = commit --amend --no-edit
 
@@ -28,8 +32,18 @@
 	# Soft reset
 	undo = reset --soft HEAD^
 
+	# Unstage from the the staging area
+	unstage = reset HEAD
+
+	# Mark a file as "assume unchanged"
+	assume = update-index --assume-unchanged
+	# Reverse the above
+	unassume = update-index --no-assume-unchanged
+	# Show the files that are currently assume-unchanged
+	assumed = !git ls-files -v | grep ^h | cut -c 3-
+
 	# List contributors with number of commits
-	contributors = shortlog --summary --numbered
+	who = shortlog -sn
 
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
