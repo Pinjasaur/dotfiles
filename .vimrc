@@ -14,7 +14,7 @@ filetype plugin indent on
 " Show absolute and relative line numbers
 set number
 set relativenumber
-" Highlist current line
+" Highlight current line
 set cursorline
 
 "
