@@ -27,14 +27,11 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Better 'cd'ing
+# Easily go up a directory
+# See 'up' in .bash_functions
 alias ..='cd ..'
-alias ..2='cd ../..'
-alias ..3='cd ../../..'
-alias ..4='cd ../../../..'
-alias ..5='cd ../../../../..'
 
-# For managing the dotfiles repo: https://uly.io/x
+# For managing the dotfiles repo
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Easier `source`ing of my shell config
