@@ -26,12 +26,11 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 ## Noteworthy
 
-### Tmux
+### PuTTY
 
 May need to change settings to get 256 colors.
 
-  - `set -g default-terminal "screen-256color"` in `.tmux.conf`
-  - `export TERM="screen-256color"` in `.shellrc`
+  - `export TERM="screen-256color"` in `.bash_extras`
   - PuTTY: Connection > Data > Terminal-type `xterm-256color`
 
 
