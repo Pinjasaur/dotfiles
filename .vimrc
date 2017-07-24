@@ -36,3 +36,9 @@ set updatetime=250
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+
+"
+" # Mappings
+"
+" Save file with root permissions
+cmap w!! w !sudo tee % > /dev/null
