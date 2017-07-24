@@ -39,3 +39,6 @@ alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Easier `source`ing of my shell config
 alias src='source ~/.bashrc'
+
+# Edit my todo file
+alias todo='$EDITOR ~/Dropbox/todo'
