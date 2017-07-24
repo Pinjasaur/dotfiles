@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/badwolf"]
 	path = .vim/bundle/badwolf
 	url = https://github.com/sjl/badwolf.git
+[submodule ".bash/z"]
+	path = .bash/z
+	url = https://github.com/rupa/z.git

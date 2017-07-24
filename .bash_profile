@@ -12,3 +12,6 @@ for file in ~/.bash_{exports,aliases,functions,prompt,extras}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
+
+# Source z (https://github.com/rupa/z)
+source ~/.bash/z/z.sh
