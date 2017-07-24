@@ -1,6 +1,6 @@
 # Make a directory and `cd` into it
 function mkd {
-	mkdir -p "$1" && cd "$1"
+	mkdir -p "$@" && cd "$_"
 }
 
 # `cd` into a directory and `ls`
