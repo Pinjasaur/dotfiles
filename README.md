@@ -1,6 +1,6 @@
 # dotfiles <img align="right" src="http://forthebadge.com/images/badges/built-with-love.svg">
 
-there's no place like ~/
+there's no place like $HOME
 
 
 ## Setup
