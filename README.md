@@ -43,3 +43,6 @@ Tooling and configuration inspired by:
 - https://github.com/necolas/dotfiles
 - https://github.com/oxalorg/dotfiles
 - https://github.com/mislav/dotfiles
+- https://github.com/thoughtbot/dotfiles
+- https://github.com/sdball/dotfiles
+- https://github.com/jimeh/dotfiles
