@@ -1,12 +1,7 @@
 # Include system-wide settings
 $include /etc/inputrc
 
-#
-# Character Encoding
-#
-
-# Use Unicode & do NOT use the "8bit hack" to I/O non-ASCII chars
-# See http://code.google.com/p/iterm2/wiki/Keybindings
+# Use UTF-8 for input/output
 set input-meta on
 set output-meta on
 set convert-meta off
@@ -32,9 +27,6 @@ set skip-completed-text on
 
 # If there are > 200 possible completions, ask to show them all
 set completion-query-items 200
-
-# Show extra file information when completing, like `ls -F` does
-set visible-stats on
 
 # Display "..." for already completed match in completions
 set completion-prefix-display-length 2
