@@ -1,0 +1,120 @@
+#!/bin/sh
+
+#
+# chext - https://github.com/lafrenierejm/chext
+#
+# Change the extension of a file.
+#
+
+# Print arguments to file descriptor 2 (stderr)
+perror() {
+	printf "%b" "$*" >&2;
+}
+
+# Print the usage message for this script to stderr
+print_usage() {
+	perror "chext usage: $0 [-iv] file [file_2] [file_3] [...] extension\n"
+}
+
+# Process options
+## Add each encountered option to $flags
+## Keep track of the verbose flag separately in $flags_v
+flags=''
+flags_v=''
+while getopts 'iv' option; do
+	case "$option" in
+		i)
+			flags="${flags}i"
+			;;
+		v)
+			flags_v='v'
+			flags="${flags}v"
+			;;
+		*)
+			;;
+	esac
+done
+## If there were any options, prefix them with '-'
+if [ -n "$flags" ]; then
+	flags="-${flags}"
+fi
+
+# Shift the argument pointer past all options
+shift $((OPTIND-1))
+[ "$1" = '--' ] && shift
+
+# Make sure that there exists at least one file and an extension
+## Exit 2 if the passed arguments were insufficient
+if [ $# -lt 2 ]; then
+	print_usage
+	exit 2
+fi
+
+# Get the last argument as $ext
+for ext; do
+	true
+done
+## If extension is not blank, make sure it starts with '.'
+if [ -n "$ext" ]; then
+	case $ext in
+		.*)
+			;;
+		*)
+			ext=.${ext}
+			;;
+	esac
+fi
+
+# Change the extensions of the passed files
+while [ $# -ge 2 ]; do
+	errmsg_nofile="chext: Error changing extension of \`$1\` to \"$ext\""
+	errmsg_nofile="${errmsg_nofile}: \`$1\` does not exist\n"
+
+	# Make sure that $1 exists
+	if [ ! -e "$1" ]; then
+		perror "$errmsg_nofile"
+		shift
+		continue
+	fi
+
+	# Extract $1's filename from its path
+	filename="${1##*/}"
+
+	# Extract $1's parent directory from its path
+	parent_dir="${1%\/*}"
+
+	# Remove $filename's current extension
+	## If $filename contains an extension, remove it
+	if [ -n "${filename%\.*}" ]; then
+		filename="${filename%\.*}"
+	fi
+
+	# Create the new filename
+	## Don't include $parent_dir if none is needed
+	if [ "$1" = "$parent_dir" ]; then
+		filename_new="${filename}$ext"
+	## Else include $parent_dir in the new filename
+	else
+		filename_new="${parent_dir}/${filename}$ext"
+	fi
+
+	# Change $1's extension
+	## Only update $1's timestamps if no rename is necessary
+	if [ "$1" = "$filename_new" ]; then
+		# Update the access and modification times of $1
+		touch "$1"
+		# Print a message if verbose flag was passed
+		if [ -n "$flags_v" ]; then
+			printf "%s\n" "The filename of $1 did not change"
+		fi
+	## Don't pass $flags if there are none
+	elif [ -z "$flags" ]; then
+		mv "$1" "$filename_new"
+	## Otherwise pass $flags
+	else
+		mv "$flags" "$1" "$filename_new"
+	fi
+
+	# Continue to the next argument
+	shift
+done
