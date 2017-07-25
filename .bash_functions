@@ -18,12 +18,21 @@ up() {
 	cd $ups
 }
 
+# Get a short URL
+shurl() {
+	if [ -z "$1" ]; then
+		echo "Usage: \`shurl <url>\`"
+	fi
+
+	curl -G --data-urlencode "url=$1" https://uly.io/shorten
+}
+
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 # Source: https://github.com/mathiasbynens/dotfiles
-function tre() {
+tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
