@@ -35,6 +35,10 @@ set completion-prefix-display-length 2
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 
+# Show colors and file info in completion list
+set colored-stats on
+set visible-stats on
+
 #
 # Bindings
 #
