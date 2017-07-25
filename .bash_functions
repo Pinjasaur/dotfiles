@@ -22,6 +22,7 @@ up() {
 shurl() {
 	if [ -z "$1" ]; then
 		echo "Usage: \`shurl <url>\`"
+		return 1
 	fi
 
 	curl -G --data-urlencode "url=$1" https://uly.io/shorten
