@@ -18,6 +18,15 @@ up() {
 	cd $ups
 }
 
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+# Source: https://github.com/mathiasbynens/dotfiles
+function tre() {
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
 # Determine size of a file or total size of a directory
 # Source: https://github.com/mathiasbynens/dotfiles
 fs() {
