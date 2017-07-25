@@ -1,2 +1,9 @@
+# Case insensitive tab-completion
+set completion-ignore-case On
+
+# Use up/down for history searching
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+
+# Include system-wide settings
+$include /etc/inputrc
