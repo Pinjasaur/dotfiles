@@ -40,6 +40,9 @@ case $OSTYPE in
 		;;
 esac
 
+# Copy `pwd` with no '\n' to the clipboard
+alias cpwd="pwd | tr -d '\n' | pbcopy"
+
 # For managing the dotfiles repo
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
