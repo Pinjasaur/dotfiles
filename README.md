@@ -46,3 +46,5 @@ Tooling and configuration inspired by:
 - https://github.com/thoughtbot/dotfiles
 - https://github.com/sdball/dotfiles
 - https://github.com/jimeh/dotfiles
+- https://github.com/csswizardry/dotfiles
+- https://github.com/paulirish/dotfiles

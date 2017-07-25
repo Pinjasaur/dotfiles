@@ -1,9 +1,55 @@
-# Case insensitive tab-completion
-set completion-ignore-case On
+# Include system-wide settings
+$include /etc/inputrc
+
+#
+# Character Encoding
+#
+
+# Use Unicode & do NOT use the "8bit hack" to I/O non-ASCII chars
+# See http://code.google.com/p/iterm2/wiki/Keybindings
+set input-meta on
+set output-meta on
+set convert-meta off
+
+#
+# Auto-Completions
+#
+
+# Case insensitive <Tab>-completion
+set completion-ignore-case on
+
+# Make '_' and '-' equal when completing
+set completion-map-case on
+
+# Add a trailing slash when autocompleting symlinks to dirs
+set mark-symlinked-directories on
+
+# Do not autocomplete hidden files unless the pattern begins with a dot
+set match-hidden-files off
+
+# Be more intelligent when autocompleting by also looking after the cursor
+set skip-completed-text on
+
+# If there are > 200 possible completions, ask to show them all
+set completion-query-items 200
+
+# Show extra file information when completing, like `ls -F` does
+set visible-stats on
+
+# Display "..." for already completed match in completions
+set completion-prefix-display-length 2
+
+# Display all completions immediately after <Tab>
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+#
+# Bindings
+#
 
 # Use up/down for history searching
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 
-# Include system-wide settings
-$include /etc/inputrc
+# Cycle through completions
+"\t": menu-complete
