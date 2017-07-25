@@ -1,10 +1,10 @@
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-  colorflag='--color'
-  export LS_COLORS='di=1;34:ln=1;35:so=1;31:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+	colorflag='--color'
+	export LS_COLORS='di=1;34:ln=1;35:so=1;31:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 else # OS X `ls`
-  colorflag='-G'
-  export LSCOLORS='ExFxBxDxCxegedabagacad'
+	colorflag='-G'
+	export LSCOLORS='ExFxBxDxCxegedabagacad'
 fi
 
 # List all files colorized in long format
@@ -27,9 +27,18 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Easily go up a directory
+# Go up a directory
 # See 'up' in .bash_functions
 alias ..='cd ..'
+
+# Add 'pbcopy' and 'pbpaste' aliases if `xclip` is installed
+# Source: https://github.com/Bash-it/bash-it/blob/master/aliases/available/clipboard.aliases.bash
+case $OSTYPE in
+	linux*)
+		XCLIP=$(command -v xclip)
+		[[ $XCLIP ]] && alias pbcopy="$XCLIP -selection clipboard" && alias pbpaste="$XCLIP -selection clipboard -o"
+		;;
+esac
 
 # For managing the dotfiles repo
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
