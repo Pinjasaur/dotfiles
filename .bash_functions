@@ -1,15 +1,15 @@
 # Make a directory and `cd` into it
-function mkd {
+mkd() {
 	mkdir -p "$@" && cd "$_"
 }
 
 # `cd` into a directory and `ls`
-function cdl {
+cdl() {
 	cd "$1" && ls
 }
 
 # Jump up `n` directories
-function up {
+up() {
 	local ups=""
 	for i in $(seq 1 $1)
 		do
@@ -20,7 +20,7 @@ function up {
 
 # General "extract" function
 # Source: https://github.com/xvoland/Extract
-function extract {
+extract() {
 	if [ -z "$1" ]; then
 		# display usage if no parameters given
 		echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
@@ -58,7 +58,7 @@ function extract {
 
 # Upload a file to the hastebin service
 # Source: https://github.com/diethnis/standalones
-function haste {
+haste() {
 	local output returnfile contents
 	if (( $# == 0 )) && [[ $(printf "%s" "$0" | wc -c) > 0 ]]
 		then
