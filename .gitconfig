@@ -57,3 +57,6 @@
 
 [status]
 	showUntrackedFiles = all
+
+[commit]
+	template = ~/.gitmessage
