@@ -6,14 +6,15 @@
 	# Prettier git `log`
 	grog = log --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)' --graph --abbrev-commit --decorate --all
 
+	# Initialize a repository and commit an empty commit
+	it = !git init && git commit -m “root” --allow-empty
+
 	# Add everything and commit with a message
 	acm = !git add -A && git commit -m
 
-	# Commit with a message
-	cm = commit -m
-
-	# Initialize a repository and commit an empty commit
-	it = !git init && git commit -m “root” --allow-empty
+	# Git `commit` shorthand
+	cm = commit
+	cmm = commit -m
 
 	# Git `status` with shorthand output
 	st = status -bs
