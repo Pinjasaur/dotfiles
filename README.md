@@ -9,7 +9,7 @@ As per https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-g
 
 Don't forget to update any submodules: `git submodule update --init --recursive`.
 
-Create a `.bash_extras` for setting up Git credentials and any specific settings.
+Create a `.extras` for setting up Git credentials and any specific settings.
 
 ```
 # Git credentials
@@ -33,7 +33,7 @@ May need to change settings to get 256 colors.
   - PuTTY: Connection > Data > Terminal-type `xterm-256color`
 
 
-## References
+## Acknowledgements
 
 Tooling and configuration inspired by:
 

@@ -1,4 +1,4 @@
-# Extend $PATH for a local $HOME/.bin and $HOME/bin directory
+# Extend $PATH for a local $HOME/bin directory
 export PATH="$HOME/bin:$PATH"
 
 # Append to the history file, don't overwrite it
@@ -8,7 +8,7 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # Load the shell dotfiles
-for file in ~/.bash_{exports,aliases,functions,prompt,extras}; do
+for file in ~/.{exports,aliases,functions,bash_prompt,extras}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
