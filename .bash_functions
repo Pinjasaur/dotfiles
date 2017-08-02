@@ -18,6 +18,11 @@ up() {
 	cd $ups
 }
 
+# Get the weather
+weather() {
+	curl -s http://wttr.in/$1
+}
+
 # Get a short URL
 shurl() {
 	if [ -z "$1" ]; then
