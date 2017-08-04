@@ -20,7 +20,11 @@ up() {
 
 # Get the weather
 weather() {
-	curl -s http://wttr.in/$1
+	if [ -z "$1" ]; then
+		curl -s http://wttr.in/$(curl -s http://ipinfo.io/postal)
+	else
+		curl -s http://wttr.in/$1
+	fi
 }
 
 # Get a short URL
