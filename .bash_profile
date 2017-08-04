@@ -7,6 +7,9 @@ shopt -s histappend
 # Check the window size after each command and update LINES and COLUMNS
 shopt -s checkwinsize
 
+# Enable globstar pattern matching (e.g. **/*.foobar)
+shopt -s globstar
+
 # Load the shell dotfiles
 for file in ~/.{exports,aliases,functions,bash_prompt,extras}; do
   [ -r "$file" ] && source "$file"
