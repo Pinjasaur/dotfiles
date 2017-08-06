@@ -1,0 +1,7 @@
+{
+  "html": {
+    "abbreviations": {
+      "a:blank": "<a href=\"\" target=\"_blank\" rel=\"noopener\">"
+    }
+  }
+}

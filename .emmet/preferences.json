@@ -1,0 +1,8 @@
+{
+  "css.autoInsertVendorPrefixes": false,
+  "less.autoInsertVendorPrefixes": false,
+  "scss.autoInsertVendorPrefixes": false,
+  "sass.autoInsertVendorPrefixes": false,
+  "stylus.autoInsertVendorPrefixes": false,
+  "caniuse.enabled": false
+}
