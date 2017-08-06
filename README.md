@@ -33,7 +33,7 @@ May need to change settings to get 256 colors.
   - PuTTY: Connection > Data > Terminal-type `xterm-256color`
 
 
-## Acknowledgements
+## `ack`nowledgements
 
 Tooling and configuration inspired by:
 
