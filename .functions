@@ -19,7 +19,7 @@ up() {
 }
 
 # Get the weather
-weather() {
+wttr() {
 	if [ -z "$1" ]; then
 		curl -s http://wttr.in/$(curl -s http://ipinfo.io/postal)
 	else
