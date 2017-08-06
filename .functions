@@ -20,11 +20,8 @@ up() {
 
 # Get the weather
 wttr() {
-	if [ -z "$1" ]; then
-		curl -s http://wttr.in/$(curl -s http://ipinfo.io/postal)
-	else
-		curl -s http://wttr.in/$1
-	fi
+	# If no $1, use the zip code from our IP
+	curl -s -H "Accept-Language: ${LANG%_*}" http://wttr.in/${1:-$(curl -s http://ipinfo.io/postal)}?q0n
 }
 
 # Get a short URL
