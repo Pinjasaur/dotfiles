@@ -1,7 +1,7 @@
 {
   "html": {
     "snippets": {
-      "a:blank": "a[href][target='blank'][rel='noopener']"
+      "a:blank": "a[href][target='_blank'][rel='noopener']"
     }
   }
 }
