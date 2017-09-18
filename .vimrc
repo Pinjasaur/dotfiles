@@ -118,8 +118,7 @@ set smartcase
 set pastetoggle=<F2>
 
 " 'jk' goes into normal mode from insert mode
-" also prevents the cursor from moving
-inoremap jk <Esc>`^
+inoremap jk <Esc>
 
 " Easier split navigation
 nnoremap <C-J> <C-W><C-J>
