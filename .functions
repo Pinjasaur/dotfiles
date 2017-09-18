@@ -24,16 +24,6 @@ wttr() {
 	curl -s -H "Accept-Language: ${LANG%_*}" http://wttr.in/${1:-$(curl -s http://ipinfo.io/postal)}?q0n
 }
 
-# Get a short URL
-shurl() {
-	if [ -z "$1" ]; then
-		echo "Usage: \`shurl <url>\`"
-		return 1
-	fi
-
-	curl -G --data-urlencode "url=$1" https://uly.io/shorten
-}
-
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
