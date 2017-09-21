@@ -7,6 +7,9 @@ else # OS X `ls`
 	export LSCOLORS='ExFxBxDxCxegedabagacad'
 fi
 
+# Allow aliases to be sudo'd
+alias sudo='sudo '
+
 # List all files colorized in long format
 alias ll="ls -lhF ${colorflag}"
 
