@@ -1,5 +1,5 @@
 # Extend $PATH for a local $HOME/bin directory
-export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
