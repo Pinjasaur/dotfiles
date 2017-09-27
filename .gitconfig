@@ -60,3 +60,6 @@
 
 [commit]
 	template = ~/.gitmessage
+
+[color]
+	ui = auto
