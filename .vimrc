@@ -34,6 +34,7 @@ filetype plugin indent on
 syntax on
 set t_Co=256
 colorscheme badwolf
+let g:markdown_fenced_languages = ['html', 'css', 'js=javascript', 'bash=sh']
 
 "
 " #UI
