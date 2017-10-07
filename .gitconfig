@@ -47,6 +47,9 @@
 	branches = branch -a
 	remotes = remote -v
 
+[color]
+	ui = auto
+
 [commit]
 	template = ~/.gitmessage
 
@@ -60,6 +63,3 @@
 
 [status]
 	showUntrackedFiles = all
-
-[color]
-	ui = auto
