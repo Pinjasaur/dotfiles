@@ -54,8 +54,12 @@
 	template = ~/.gitmessage
 
 [core]
-	# Custom .gitignore
-	excludesfile = ~/.gitignore_global
+	# Global .gitignore
+	excludesfile = ~/.gitignore.global
+
+[include]
+	# Custom .gitconfig
+	path = ~/.gitconfig.local
 
 [push]
 	default = simple

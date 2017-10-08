@@ -1,2 +1,3 @@
-.extras
+.locals
+.*.local
 .cfg/

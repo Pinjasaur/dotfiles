@@ -182,3 +182,8 @@ if exists("+undofile")
 	set undodir+=~/.vim/undo//
 	set undofile
 endif
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+	source ~/.vimrc.local
+endif
