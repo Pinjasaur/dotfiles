@@ -18,6 +18,20 @@ up() {
 	cd $ups
 }
 
+# `man` that supports shell builtins
+# Source: https://unix.stackexchange.com/a/18088
+man() {
+	case "$(type -t "$1"):$1" in
+		# built-in
+		builtin:*) help "$1" | "${PAGER:-less}";;
+		# pattern
+		*[[?*]*) help "$1" | "${PAGER:-less}";;
+		# something else, presumed to be an external command or options for the man
+		# command or a section number
+		*) command -p man "$@";;
+	esac
+}
+
 # Get the weather
 wttr() {
 	# If no $1, use the zip code from our IP
