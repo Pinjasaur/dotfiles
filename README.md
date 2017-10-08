@@ -9,19 +9,22 @@ As per https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-g
 
 Don't forget to update any submodules: `git submodule update --init --recursive`.
 
-Create a `.extras` for setting up Git credentials and any specific settings.
+Create a `.gitconfig.local` to put your Git credentials (and any other settings):
 
 ```
-# Git credentials
-GIT_AUTHOR_NAME="Paul Esch-Laurent"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="p@uly.io"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-
-# Set the credentials
-git config --global user.name "$GIT_AUTHOR_NAME"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+[user]
+  name = Paul Esch-Laurent
+  email = p@uly.io
 ```
+
+
+## Customizations
+
+Create a `.locals` for setting up any shell-specic settings (aliases, functions,
+exports, etc.).
+
+There are also local configs for Vim (`.vimrc.local`) and tmux
+(`.tmux.conf.local`) where you can place custom local settings.
 
 
 ## Noteworthy
@@ -47,3 +50,6 @@ Tooling and configuration inspired by:
 - https://github.com/jimeh/dotfiles
 - https://github.com/csswizardry/dotfiles
 - https://github.com/paulirish/dotfiles
+
+## License
+[MIT](https://pinjasaur.mit-license.org/2017).
