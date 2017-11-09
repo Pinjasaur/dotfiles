@@ -33,9 +33,9 @@ man() {
 }
 
 # Get the weather
-wttr() {
+weather() {
 	# If no $1, use the zip code from our IP
-	curl -s -H "Accept-Language: ${LANG%_*}" http://wttr.in/${1:-$(curl -s http://ipinfo.io/postal)}?q0n
+	curl -s -H "Accept-Language: ${LANG%_*}" http://wttr.in/${1:-$(curl -s http://ipinfo.io/postal)}?${2:-q0n}
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
