@@ -20,7 +20,7 @@ Create a `.gitconfig.local` to put your Git credentials (and any other settings)
 
 ## Customizations
 
-Create a `.locals` for setting up any shell-specic settings (aliases, functions,
+Create a `.bash.local` for setting up any shell-specic settings (aliases, functions,
 exports, etc.).
 
 There are also local configs for Vim (`.vimrc.local`) and tmux

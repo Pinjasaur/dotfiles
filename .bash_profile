@@ -14,7 +14,7 @@ shopt -s globstar
 source ~/.bash/z/z.sh
 
 # Load the shell dotfiles
-for file in ~/.{exports,aliases,functions,bash_prompt,locals}; do
+for file in ~/.{exports,aliases,functions,bash_prompt,bash.local}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
