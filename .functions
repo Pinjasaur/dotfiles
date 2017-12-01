@@ -47,6 +47,11 @@ tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
+# Select a range of a file by line number
+selln() {
+	sed -n "${1},${2}p" "${3}"
+}
+
 # Determine size of a file or total size of a directory
 # Source: https://github.com/mathiasbynens/dotfiles
 fs() {
