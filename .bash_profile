@@ -7,8 +7,11 @@ shopt -s histappend
 # Check the window size after each command and update LINES and COLUMNS
 shopt -s checkwinsize
 
-# Enable globstar pattern matching (e.g. **/*.foobar)
+# Globstar pattern matching (e.g. **/*.foobar)
 shopt -s globstar
+
+# Auto-cd to a directory without specifying 'cd' (e.g. foobar)
+shopt -s autocd
 
 # Source z (https://github.com/rupa/z)
 source ~/.bash/z/z.sh
