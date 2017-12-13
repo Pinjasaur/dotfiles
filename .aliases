@@ -30,10 +30,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Go up a directory
-# See 'up' in .functions
-alias ..='cd ..'
-
 # Add 'pbcopy' and 'pbpaste' aliases if `xclip` is installed
 # Source: https://github.com/Bash-it/bash-it/blob/master/aliases/available/clipboard.aliases.bash
 case $OSTYPE in
