@@ -195,3 +195,17 @@ haste() {
 	echo "Upload failed."
 	return 1
 }
+
+# Cache $DISPLAY if we're not in tmux, otherwise update from the cache
+# Based on: http://alexteichman.com/octo/blog/2014/01/01/x11-forwarding-and-terminal-multiplexers/
+update-x11-forwarding() {
+	if [ ! -f ~/.display ]; then
+		touch ~/.display
+	fi
+
+	if [ -z "$TMUX" ]; then
+		echo $DISPLAY > ~/.display
+	else
+		export DISPLAY=`cat ~/.display`
+	fi
+}
