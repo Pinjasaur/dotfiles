@@ -11,10 +11,9 @@ cdl() {
 # Jump up `n` directories
 up() {
 	local ups=""
-	for i in $(seq 1 $1)
-		do
-			ups=$ups"../"
-		done
+	for i in $(seq 1 ${1:-1}); do
+		ups=$ups"../"
+	done
 	cd $ups
 }
 
