@@ -53,5 +53,8 @@ alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Easier `source`ing of my shell config
 alias src='source ~/.bashrc'
 
+# Unset a function; like `unalias` but for functions
+alias unfunction='unset -f'
+
 # Edit my todo file
 alias todo='$EDITOR ~/Dropbox/todo'
