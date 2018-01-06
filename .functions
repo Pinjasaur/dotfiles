@@ -34,6 +34,7 @@ man() {
 # Get the weather
 weather() {
 	# If no $1, use the zip code from our IP
+	# If no $2, use "q0n" as URL params
 	curl -s -H "Accept-Language: ${LANG%_*}" http://wttr.in/${1:-$(curl -s http://ipinfo.io/postal)}?${2:-q0n}
 }
 
@@ -46,9 +47,21 @@ tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# Select a range of a file by line number
-selln() {
+# Select a range of a file by line numbers
+# Usage: selrg 5 10 file.txt
+selrg() {
 	sed -n "${1},${2}p" "${3}"
+}
+
+# Kill all processes on a specified port
+# Source: https://stackoverflow.com/a/5043907
+killport() {
+	if [ -z "${1}" ]; then
+		echo "Usage: \`killport <port>\`"
+		return 1
+	fi
+
+	lsof -i tcp:${1} | awk 'NR!=1 {print $2}' | xargs kill
 }
 
 # Determine size of a file or total size of a directory
