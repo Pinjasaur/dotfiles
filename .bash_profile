@@ -10,6 +10,9 @@ shopt -s checkwinsize
 # Globstar pattern matching (e.g. **/*.foobar)
 shopt -s globstar
 
+# Extended globbing
+shopt -s extglob
+
 # Auto-cd to a directory without specifying 'cd' (e.g. foobar)
 shopt -s autocd
 
