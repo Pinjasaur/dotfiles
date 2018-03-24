@@ -25,3 +25,6 @@
 [submodule ".bash/z"]
 	path = .bash/z
 	url = https://github.com/rupa/z.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
