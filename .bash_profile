@@ -19,6 +19,9 @@ shopt -s autocd
 # Source z (https://github.com/rupa/z)
 source ~/.bash/z/z.sh
 
+# Source Git Bash completion
+source ~/.bash/git-completion.bash
+
 # Load the shell dotfiles
 for file in ~/.{exports,aliases,functions,bash_prompt,bash.local}; do
 	[ -r "$file" ] && source "$file"
