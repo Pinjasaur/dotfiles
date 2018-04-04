@@ -28,8 +28,12 @@
 	wdiff = diff --color-words
 	cdiff = diff --color-words=.
 
-	# Stash everything
-	stash-all = stash save --include-untracked
+	# Stash only unstaged changes to tracked files
+	stsh    = stash --keep-index
+	# Stash untracked and tracked files
+	staash  = stash --include-untracked
+	# Stash ignored, untracked, and tracked files
+	staaash = stash --all
 
 	# Soft reset
 	undo = reset --soft HEAD^
