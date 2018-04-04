@@ -22,7 +22,7 @@
 	cob = checkout -b
 
 	# Commit files in the staging area to the last commit
-	commend = commit --amend --no-edit
+	commend = commit --amend --no-edit --reset-author
 
 	# Stash everything
 	stash-all = stash save --include-untracked
