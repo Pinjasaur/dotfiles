@@ -24,6 +24,10 @@
 	# Commit files in the staging area to the last commit
 	commend = commit --amend --no-edit --reset-author
 
+	# Diff words & chars with colored output
+	wdiff = diff --color-words
+	cdiff = diff --color-words=.
+
 	# Stash everything
 	stash-all = stash save --include-untracked
 
