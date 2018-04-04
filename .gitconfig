@@ -3,21 +3,22 @@
 	grog = log --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)' --graph --abbrev-commit --decorate --all
 
 	# Initialize a repository and commit an empty commit
-	it = !git init && git commit -m “root” --allow-empty
+	it = !git init && git commit -m "root" --allow-empty
 
-	# Add everything and commit with a message
-	acm = !git add -A && git commit -m
+	# Add everything and commit (with or w/o a message)
+	acm  = !git add -A && git commit
+	acmm = !git add -A && git commit -m
 
 	# Git `commit` shorthand
-	cm = commit
+	cm  = commit
 	cmm = commit -m
 
 	# Git `status` with shorthand output
-	st = status -bs
+	st  = status -bs
 	sti = status -bs --ignored
 
 	# Git `checkout` shorthand
-	co = checkout
+	co  = checkout
 	cob = checkout -b
 
 	# Commit files in the staging area to the last commit
