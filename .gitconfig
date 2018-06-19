@@ -5,9 +5,10 @@
 	# Initialize a repository and commit an empty commit
 	it = !git init && git commit -m "root" --allow-empty
 
-	# Add everything and commit (with or w/o a message)
+	# Add everything and commit
 	acm  = !git add -A && git commit
-	acmm = !git add -A && git commit -m
+	# ... with a message verbatim from the CLI
+	acmm = "!f() { git add -A && git commit -m \"${*:-Updates $(date +%Y-%m-%d)}\"; }; f"
 
 	# Git `commit` shorthand
 	cm  = commit
