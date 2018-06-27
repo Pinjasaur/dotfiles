@@ -12,7 +12,8 @@
 
 	# Git `commit` shorthand
 	cm  = commit
-	cmm = commit -m
+	# ... with a message verbatim from the CLI
+	cmm = "!f() { git commit -m \"${*:-Updates $(date +%Y-%m-%d)}\"; }; f"
 
 	# Git `status` with shorthand output
 	st  = status -bs
