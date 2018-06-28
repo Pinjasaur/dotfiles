@@ -16,7 +16,10 @@ shopt -s extglob
 # Auto-cd to a directory without specifying 'cd' (e.g. foobar)
 shopt -s autocd
 
-# Source z (https://github.com/rupa/z)
+# Don't have Z clobber the $PROMPT_COMMAND
+export _Z_NO_PROMPT_COMMAND='1'
+
+# Source Z (https://github.com/rupa/z)
 source ~/.bash/z/z.sh
 
 # Source Git Bash completion
@@ -28,14 +31,35 @@ for file in ~/.{exports,aliases,functions,bash_prompt,bash.local}; do
 done
 unset file
 
-# Ran before every command
+# The next two functions are helpers that mimic zsh's preexec & precmd:
+# 1. preexec runs before every command
+# 2. the command runs
+# 3. precmd runs before the prompt
+
+# Ran before every command (before `precmd`)
 preexec() {
-	# Don't cause a preexec for PROMPT_COMMAND
-	# Beware! This fails if PROMPT_COMMAND is a string with more than one command
+	# Don't cause a preexec if completing
+	[ -n "$COMP_LINE" ] && return
+
+	# Don't cause a preexec for $PROMPT_COMMAND
 	[ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return
 
 	# Update $DISPLAY to help avoid stale values within tmux
 	update-x11-forwarding
+
+# Z
+	_z --add "$(command pwd '$_Z_RESOLVE_SYMLINKS' 2>/dev/null)" 2>/dev/null
+
+	# echo ">>> preexec <<<"
+}
+
+# Ran before every prompt (after `preexec`)
+precmd() {
+	# Write current/new lines to histfile
+	history -a
+
+	# echo "<<< precmd >>>"
 }
 
 trap 'preexec' DEBUG
+export PROMPT_COMMAND=precmd
