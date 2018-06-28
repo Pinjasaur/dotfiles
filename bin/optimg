@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+#
+# Optimize images by compressing & renaming.
+#
+# Paul Esch-Laurent <p@uly.io>
+# MIT
+#
+# Requires `imagemin`: npm i -g imagemin-cli
+
+# Strict settings
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Magic variables
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+__base="$(basename "${__file}" .sh)"
+
+# Output directory
+OUT_DIR="_optimg"
+
+# Print out usage information
+usage() {
+  cat <<HEREDOC
+Usage:
+  ${__base} <files>
+
+  <files> can be individual files or globs (e.g. *.jpg, foo/*).
+
+Options:
+  -h --help    Show this.
+  -r --rename  Just rename, don't compress.
+HEREDOC
+}
+
+# Check for required binary
+check_reqs() {
+  if [[ ! $(type -P "imagemin") ]]; then
+    echo "'imagemin' required. Install with npm: npm i -g imagemin-cli"
+    exit 1
+  fi
+}
+
+# Create output directory if necessary
+create_directory() {
+  if [[ ! -d "${OUT_DIR}" ]]; then
+    mkdir -p "${OUT_DIR}"
+    echo "Created output directory: ${OUT_DIR}"
+  fi
+}
+
+# Rename 'em up
+rename_images() {
+  create_directory
+  for file in "${@:-}"; do
+
+    # It's probably an image and it's not a directory
+    if file "${file}" | grep -qE 'image|bitmap' && [[ ! -d "${file}" ]]; then
+
+      # First 7 characters of SHA2 hash
+      hash="$(openssl sha256 "${file}" | awk '{print $2}' | head -c 7)"
+      full="$(basename "${file}")"
+      # Get extension (... and convert jpeg -> jpg)
+      ext="$(echo "${full##*.}" | sed -e 's/e//g')"
+      # Remove non- alphanumerics, periods, underscores, and dashes
+      name="$(echo "${full%.*}" | sed -e 's/[^A-Za-z0-9._-]//g')"
+      echo "Renaming ${file}"
+
+      cp "${file}" "${OUT_DIR}/${name}.${hash}.${ext,,}"
+    fi
+  done
+}
+
+# Optimize (compress & rename) 'em up
+optimize_images() {
+  create_directory
+  pids=()
+
+  for file in "${@:-}"; do
+
+    # It's probably an image and it's not a directory
+    if file "${file}" | grep -qE 'image|bitmap' && [[ ! -d "${file}" ]]; then
+
+      # First 7 characters of SHA2 hash
+      hash="$(openssl sha256 "${file}" | awk '{print $2}' | head -c 7)"
+      full="$(basename "${file}")"
+      # Get extension (... and convert jpeg -> jpg)
+      ext="$(echo "${full##*.}" | sed -e 's/e//g')"
+      # Remove non- alphanumerics, periods, underscores, and dashes
+      name="$(echo "${full%.*}" | sed -e 's/[^A-Za-z0-9._-]//g')"
+      echo "Optimizing ${file}"
+
+      imagemin "${file}" > "${OUT_DIR}/${name}.${hash}.${ext,,}" &
+      pids+=("${!}")
+    fi
+  done
+
+  for pid in "${pids[@]}"; do
+    wait "${pid}"
+  done
+}
+
+# Drive it
+main() {
+  check_reqs
+  # Parse args
+  if [[ -z "${1:-}" ]]; then
+    usage
+  elif [[ "${1:-}" =~ ^-h|--help$ ]]; then
+    usage
+  elif [[ "${1:-}" =~ ^-r|--rename$ ]]; then
+    shift
+    rename_images "${@:-}"
+  else
+    optimize_images "${@:-}"
+  fi
+}
+
+# Call it
+main "${@:-}"
