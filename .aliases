@@ -57,4 +57,4 @@ alias src='source ~/.bashrc'
 alias unfunction='unset -f'
 
 # Edit my todo file
-alias todo='$EDITOR ~/Dropbox/todo'
+alias todo='$EDITOR ~/Dropbox/todo.txt'
