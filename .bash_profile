@@ -47,9 +47,6 @@ preexec() {
 	# Update $DISPLAY to help avoid stale values within tmux
 	update-x11-forwarding
 
-# Z
-	_z --add "$(command pwd '$_Z_RESOLVE_SYMLINKS' 2>/dev/null)" 2>/dev/null
-
 	# echo ">>> preexec <<<"
 }
 
@@ -57,6 +54,9 @@ preexec() {
 precmd() {
 	# Write current/new lines to histfile
 	history -a
+
+	# Z
+	(_z --add "$(command pwd '$_Z_RESOLVE_SYMLINKS' 2>/dev/null)" 2>/dev/null &)
 
 	# echo "<<< precmd >>>"
 }
