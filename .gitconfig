@@ -50,6 +50,9 @@
 	# Show the files that are currently assume-unchanged
 	assumed = !git ls-files -v | grep ^h | cut -c 3-
 
+	# Create an annotated tag with a message for a (sem)ver release
+	ver = "!f() { git tag -a ${1} -m \"${1}\"; }; f"
+
 	# List contributors with number of commits
 	who = shortlog -sn
 
