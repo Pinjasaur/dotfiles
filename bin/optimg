@@ -59,7 +59,7 @@ rename_images() {
     if file "${file}" | grep -qE 'image|bitmap' && [[ ! -d "${file}" ]]; then
 
       # First 7 characters of SHA2 hash
-      hash="$(openssl sha256 "${file}" | awk '{print $2}' | head -c 7)"
+      hash="$(openssl sha256 "${file}" | tr -d '\n' | tail -c 64 | head -c 7)"
       full="$(basename "${file}")"
       # Get extension (... and convert jpeg -> jpg)
       ext="$(echo "${full##*.}" | sed -e 's/e//g')"
@@ -83,7 +83,7 @@ optimize_images() {
     if file "${file}" | grep -qE 'image|bitmap' && [[ ! -d "${file}" ]]; then
 
       # First 7 characters of SHA2 hash
-      hash="$(openssl sha256 "${file}" | awk '{print $2}' | head -c 7)"
+      hash="$(openssl sha256 "${file}" | tr -d '\n' | tail -c 64 | head -c 7)"
       full="$(basename "${file}")"
       # Get extension (... and convert jpeg -> jpg)
       ext="$(echo "${full##*.}" | sed -e 's/e//g')"
