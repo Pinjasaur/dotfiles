@@ -23,6 +23,9 @@
 	co  = checkout
 	cob = checkout -b
 
+	# `checkout` a branch from a pull request (GitHub specific?!)
+	copr = "!f() { git fetch ${2:-origin} pull/${1}/head:pr/${1} && git checkout pr/${1}; }; f"
+
 	# Commit files in the staging area to the last commit
 	commend = commit --amend --no-edit --reset-author
 
