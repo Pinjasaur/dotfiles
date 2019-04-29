@@ -59,9 +59,12 @@
 	# List contributors with number of commits
 	who = shortlog -sn
 
+	# List branches ordered by most recent commit (with verbose information)
+	brecent = branch --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
-	branches = branch -a
+	branches = branch -a # -v for verbose
 	remotes = remote -v
 
 [color]
