@@ -72,7 +72,7 @@
 	# List branches ordered by most recent commit (with verbose information)
 	brecent = branch --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
-# Delete local branches also gone from the origin (pass in -D to force-delete)
+	# Delete local branches also gone from the origin (pass in -D to force-delete)
 	rimraf = "!f() { git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch ${1:--d}; }; f"
 
 	# Show verbose output about tags, branches or remotes

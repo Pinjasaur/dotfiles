@@ -56,8 +56,11 @@ alias src='source ~/.bashrc'
 # Unset a function; like `unalias` but for functions
 alias unfunction='unset -f'
 
-# Edit my todo file
-alias todo='$EDITOR ~/Dropbox/todo.txt'
+# Edit my todo / notes / whatever file
+alias todo='$EDITOR ~/Dropbox/todo.md'
+
+# ... .diff adds highlighting for +/-
+alias todiff='$EDITOR ~/Dropbox/todo.diff'
 
 # Spin up a browser-sync server watching local files w/ no browser notifications
 alias bsync='browser-sync --no-notify --watch'
