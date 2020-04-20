@@ -82,6 +82,9 @@ set relativenumber
 " Highlight current line
 set cursorline
 
+" Cursor can go past last char, padding with spaces if inserted
+set virtualedit=all
+
 " Display invisibles
 set list
 set listchars=tab:»\ ,trail:·,nbsp:␣,eol:¬,extends:→,precedes:←
