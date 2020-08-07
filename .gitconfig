@@ -98,5 +98,8 @@
 	default = simple
 	followTags = true
 
+[pull]
+	ff = only
+
 [status]
 	showUntrackedFiles = all
