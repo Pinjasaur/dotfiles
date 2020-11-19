@@ -163,10 +163,14 @@ targz() {
 	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
 }
 
-# Upload a file to the hastebin service
-# Source: https://github.com/seejohnrun/haste-client#lightweight-alternative
-# Used like: cat file.txt | haste
-haste() { a=$(cat); curl -X POST -s -d "$a" https://hastebin.com/documents | awk -F '"' '{print "https://hastebin.com/"$4}'; }
+# Upload a file to a hastebin
+# Modified from: https://github.com/seejohnrun/haste-client#lightweight-alternative
+# Used like: cat file.txt | haste or haste < file.txt
+haste() {
+	a=$(cat);
+	b=$(curl -X POST -s -d "$a" "${HASTE_SERVER:-https://hastebin.com}"/documents | awk -F '"' '{print $4}');
+	echo "${HASTE_SERVER:-https://hastebin.com}"/"$b";
+}
 
 # Cache $DISPLAY if we're not in tmux, otherwise update from the cache
 # Based on: http://alexteichman.com/octo/blog/2014/01/01/x11-forwarding-and-terminal-multiplexers/
