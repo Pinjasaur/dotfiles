@@ -1,5 +1,24 @@
-# If applied, this commit will...
-
-# Explain why this change is being made
-
-# Provide links to any relevant tickets, articles or other resources
+# <type>[optional scope]: <description>
+# 
+# [optional body]
+# 
+# [optional footer(s)]
+# 
+# build | change | chore | ci | deprecate | docs | feat | fix
+# perf | refactor | remove | revert | security | style | test
+# 
+# build: build system or external dependencies of the product
+# change: changes the implementation of an existing feature
+# chore: technical or preventative maintenance not tied to any specific feature
+# ci: changes to CI/CD scripts or config files
+# deprecate: deprecates existing functionality, but does not remove it
+# docs: adds, updates, or revises documentation
+# feat: implements a new feature
+# fix: fixes a defect
+# perf: improves the performance, does not change an existing feature
+# refactor: refactors existing code, does not alter existing behavior
+# remove: removes a feature from the product
+# revert: reverts one or more commits
+# security: improves the security of the product
+# style: updates or reformats the style of the source code
+# test: changes the suite of automated tests
