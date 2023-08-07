@@ -1,0 +1,43 @@
+#!/usr/bin/env nix-shell
+# shellcheck shell=bash
+#! nix-shell -i bash --pure
+#! nix-shell -p bash toybox pdfminer pandoc
+#! nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/4ecab3273592f27479a583fb6d975d4aba3486fe.tar.gz
+
+# Strict settings
+set -euo pipefail
+IFS=$'\n\t'
+
+# "Magic" variables
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+__base="$(basename "${__file}" .sh)"
+
+# Print out usage information
+usage() {
+  cat <<HEREDOC
+Usage: ${__base} <input.pdf>
+HEREDOC
+}
+
+# Drive it
+main() {
+
+  if [[ -z "${1:-}" ]]; then
+    usage
+    exit 1
+  fi
+
+  local line_length
+  if [[ -z "${2:-}" ]]; then
+    line_length="--wrap=none"
+  else
+    line_length="--columns=${2}"
+  fi
+
+  pdf2txt -t text "${1}" | pandoc -t markdown-smart "${line_length}" > "$(dirname "${1}")/$(basename "${1}" .pdf).md"
+
+}
+
+# Call it
+main "${@:-}"
