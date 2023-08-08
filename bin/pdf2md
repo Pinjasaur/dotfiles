@@ -16,7 +16,7 @@ __base="$(basename "${__file}" .sh)"
 # Print out usage information
 usage() {
   cat <<HEREDOC
-Usage: ${__base} <input.pdf>
+Usage: ${__base} <input.pdf> [line length (columns)]
 HEREDOC
 }
 
