@@ -23,8 +23,10 @@
 	co  = checkout
 	cob = checkout -b
 
-	# `checkout` a branch from a pull request (GitHub specific?!)
-	copr = "!f() { git fetch ${2:-origin} pull/${1}/head:pr/${1} && git checkout pr/${1}; }; f"
+	# Checkout a PR branch (GitHub specific)
+	pr = "!f() { git fetch ${2:-origin} pull/${1}/head:pr/${1} && git checkout pr/${1}; }; f"
+	# Checkout a MR branch (GitLab specific)
+	mr = "!f() { git fetch ${2:-origin} merge-requests/${1}/head:mr-${2:-origin}-${1} && git checkout mr-${2:-origin}-${1}; }; f"
 
 	# Commit files in the staging area to the last commit
 	commend = commit --amend --no-edit --reset-author
@@ -32,6 +34,14 @@
 	# Diff words & chars with colored output
 	wdiff = diff --color-words
 	cdiff = diff --color-words=.
+
+	# Diff with --word-diff
+	wd = diff --word-diff
+	# ... and --ignore-all-spaces
+	wds = diff --word-diff --ignore-all-space
+
+	# Shorthand for patches (don't always need metadata from `format-patch`)
+	patch = !git --no-pager diff --no-color
 
 	# Stash only unstaged changes to tracked files
 	stsh    = stash --keep-index
