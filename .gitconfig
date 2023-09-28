@@ -105,8 +105,9 @@
 	path = ~/.gitconfig.local
 
 [push]
-	default = simple
 	followTags = true
+	autoSetupRemote = true
+	default = current
 
 [pull]
 	ff = only
