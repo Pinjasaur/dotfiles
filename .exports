@@ -10,3 +10,6 @@ export HISTCONTROL='ignoreboth'
 
 # Don't clear the screen after quitting a manpage
 export MANPAGER='less -X'
+
+# Source: https://adamchainz.gumroad.com/l/bygdx
+export LESS='--chop-long-lines --HILITE-UNREAD --ignore-case --incsearch --jump-target=4 --LONG-PROMPT --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --use-color --window=-4'
