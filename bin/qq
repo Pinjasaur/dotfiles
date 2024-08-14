@@ -7,6 +7,9 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+# On-the-fly debugging
+[[ -n "${DEBUG:-}" ]] && set -x
+
 # "Magic" variables
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
@@ -17,22 +20,30 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-if [[ -z "$KAGI_TOKEN" ]]; then
+if [[ -z "${KAGI_TOKEN:-}" ]]; then
   echo "Token required. Visit https://kagi.com/settings?p=api"
   exit 1
 fi
 
-# Be more verbose (include references)
+# Read stdin if it's there
+[[ -p /dev/stdin ]] && stdin=$(cat -)
+
+# Be more verbose (really just include references)
 verbose=false
 if [[ "${1:-}" =~ -v|--verbose ]]; then
   verbose=true
   shift
 fi
 
+# Construct the query, using jq as necessary to safely escape
+query="Answer in as few words as possible. Use a brief style with short replies. Respond in plain-text, no formatting."
+[[ -n "${stdin:-}" ]] && query+=" Input: $(echo -n "${stdin:-}" | jq -Rsar .)"
+query+=" Question: $(echo -n "${*:-}" | jq -Rsar .)"
+
 if ! response=$(curl -s --fail-with-body \
   -H "Authorization: Bot $KAGI_TOKEN" \
   -H "Content-Type: application/json" \
-  --data "{\"query\": \"Answer in as few words as possible. Use a brief style with short replies. Respond in plain-text, no formatting. Prompt: ${*}\"}" \
+  --data "{\"query\": $(echo -n "$query" | jq -Rsar .)}" \
   https://kagi.com/api/v0/fastgpt); then
   echo "No dice."
   echo "$response" | jq -r '.error[] | .msg'
